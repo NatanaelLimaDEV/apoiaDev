@@ -6,9 +6,14 @@ import { Menu, LogOut } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { DialogTitle } from "@/components/ui/dialog"
+import { logout } from "../_actions/logout"
 
 export function MobileMenu() {
   const [open, setOpen] = useState(false)
+
+  async function handleSignOut() {
+    await logout()
+  }
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -42,6 +47,7 @@ export function MobileMenu() {
           <Button
             variant="ghost"
             className="justify-start px-0 text-red-500 hover:text-red-600 hover:bg-transparent cursor-pointer"
+            onClick={handleSignOut}
           >
             <LogOut className="mr-2 h-4 w-4" />
             Sair
